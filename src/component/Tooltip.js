@@ -49,6 +49,7 @@ const propTypes = {
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
     unit: PropTypes.any,
   })),
+  anchorDataKey: PropTypes.string,
 
   isAnimationActive: PropTypes.bool,
   animationDuration: PropTypes.number,
@@ -167,7 +168,9 @@ class Tooltip extends Component {
 
         // Anchor to x-axis?
         if (anchorDataKey === 'x') {
-          translateY = viewBox.height - boxHeight;
+          translateX = Math.max(viewBox.left, coordinate.x - (boxWidth / 2));
+           translateX = Math.min(viewBox.width - boxWidth + viewBox.left, translateX);
+          translateY = viewBox.height + offset;
         }
       } else {
         outerStyle.visibility = 'hidden';

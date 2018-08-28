@@ -38,7 +38,7 @@ const data01 = [
 const data02 = [
   { name: 'Page A', uv: 300, pv: 2600, amt: 3400 },
   { name: 'Page B', uv: 400, pv: 4367, amt: 6400 },
-  { name: 'Page C', uv: 300, pv: 1398, amt: 2400 },
+  { name: 'Page C', uv: 300, pv: 0, amt: 2400 },
   { name: 'Page D', uv: 200, pv: 9800, amt: 2400 },
   { name: 'Page E', uv: 278, pv: 3908, amt: 2400 },
   { name: 'Page F', uv: 189, pv: 4800, amt: 2400 },
@@ -421,7 +421,7 @@ export default class Demo extends Component {
               <Label value="y轴" position="insideLeft" angle={90} />
             </YAxis>
             <Tooltip />
-            <Tooltip anchorDataKey="x" content={val => <div>hello!</div>} />
+            <Tooltip anchorDataKey="x" content={val => <div style={{ padding: '3px 6px', background: '#000', color: '#fff'}}>hello!</div>} isAnimationActive={false} />
             <Line
               key="uv"
               type="monotone"
