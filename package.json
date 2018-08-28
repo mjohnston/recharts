@@ -2,7 +2,7 @@
   "name": "recharts",
   "version": "1.1.1",
   "description": "React charts",
-  "main": "lib/index",
+  "main": "src/index",
   "module": "es6/index",
   "jsnext:main": "es6/index",
   "files": [
