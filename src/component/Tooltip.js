@@ -168,8 +168,8 @@ class Tooltip extends Component {
 
         // Anchor to x-axis?
         if (anchorDataKey === 'x') {
-          translateX = Math.max(viewBox.left, coordinate.x - (boxWidth / 2));
-           translateX = Math.min(viewBox.width - boxWidth + viewBox.left, translateX);
+          translateX = Math.max(0, coordinate.x - (boxWidth / 2));
+           translateX = Math.min(viewBox.width - boxWidth, translateX);
           translateY = viewBox.height + offset;
         }
       } else {
