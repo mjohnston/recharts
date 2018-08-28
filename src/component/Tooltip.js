@@ -134,7 +134,7 @@ class Tooltip extends Component {
 
   render() {
     const { payload, isAnimationActive, animationDuration, animationEasing,
-      filterNull } = this.props;
+      filterNull, anchorDataKey } = this.props;
     const finalPayload = filterNull && payload && payload.length ?
       payload.filter(entry => !_.isNil(entry.value)) : payload;
     const hasPayload = finalPayload && finalPayload.length;
@@ -164,6 +164,11 @@ class Tooltip extends Component {
           coordinate.y + boxHeight + offset > (viewBox.y + viewBox.height) ?
             coordinate.y - boxHeight - offset :
             coordinate.y + offset, viewBox.y);
+
+        // Anchor to x-axis?
+        if (anchorDataKey === 'x') {
+          translateY = viewBox.height - boxHeight;
+        }
       } else {
         outerStyle.visibility = 'hidden';
       }

@@ -1307,21 +1307,24 @@ const generateCategoricalChart = ({
      * Draw Tooltip
      * @return {ReactElement}  The instance of Tooltip
      */
-    renderTooltip() {
+    renderTooltips() {
       const { children } = this.props;
-      const tooltipItem = findChildByType(children, Tooltip);
+      const tooltipItems = findAllByType(children, Tooltip);
 
-      if (!tooltipItem) { return null; }
+      if (!tooltipItems || tooltipItems.length === 0) { return null; }
 
       const { isTooltipActive, activeCoordinate, activePayload,
         activeLabel, offset } = this.state;
 
-      return cloneElement(tooltipItem, {
-        viewBox: { ...offset, x: offset.left, y: offset.top },
-        active: isTooltipActive,
-        label: activeLabel,
-        payload: isTooltipActive ? activePayload : [],
-        coordinate: activeCoordinate,
+      return tooltipItems.map((tooltipItem, key) => {
+        return cloneElement(tooltipItem, {
+          key,
+          viewBox: { ...offset, x: offset.left, y: offset.top },
+          active: isTooltipActive,
+          label: activeLabel,
+          payload: isTooltipActive ? activePayload : [],
+          coordinate: activeCoordinate,
+        });
       });
     }
 
@@ -1523,7 +1526,7 @@ const generateCategoricalChart = ({
             }
           </Surface>
           {this.renderLegend()}
-          {this.renderTooltip()}
+          {this.renderTooltips()}
         </div>
       );
     }

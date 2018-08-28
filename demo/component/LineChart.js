@@ -421,6 +421,7 @@ export default class Demo extends Component {
               <Label value="y轴" position="insideLeft" angle={90} />
             </YAxis>
             <Tooltip />
+            <Tooltip anchorDataKey="x" content={val => <div>hello!</div>} />
             <Line
               key="uv"
               type="monotone"
